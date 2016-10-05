@@ -15,12 +15,15 @@ class Category extends Model
     public
         $timestamps = true;
 
+    public function Transactions(){
+        return $this->belongsToMany('App\Transaction', 'category_transaction_link', 'transaction_id', 'category_id');
 
+    }
 
 
 
     static function getAll(){
-        return self::orderBy('title')->get();
+        return self::with('Transactions')->orderBy('title')->get();
     }
 
 

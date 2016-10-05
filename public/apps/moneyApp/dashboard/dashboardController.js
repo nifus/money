@@ -2,15 +2,16 @@
     'use strict';
     angular.module('moneyApp').controller('dashboardController', dashboardController);
 
-    dashboardController.$inject = ['$scope',  'transferFactory','categoryFactory'];
+    dashboardController.$inject = ['$scope',  'transactionFactory','categoryFactory'];
 
-    function dashboardController($scope, transferFactory, categoryFactory) {
+    function dashboardController($scope, transactionFactory, categoryFactory) {
 
         $scope.form = {
             type:'noncash'
         };
         $scope.env = {
-            categories:[]
+            categories:[],
+            transactions:[],
         };
         function initPage(deferred) {
             $scope.env.categories = $scope.$parent.env.categories;
@@ -28,14 +29,14 @@
         $scope.$parent.init.push(initPage);
 
         $scope.save = function(data){
-            transferFactory.store(data).then(function(response){
+            transactionFactory.store(data).then(function(response){
                 if(response.success==true){
                     $scope.form = {
                         type:'noncash'
                     };
                     categoryFactory.getAll().then(function(categories){
                         $scope.env.categories = categories;
-                    })
+                    });
                 }
             })
         }

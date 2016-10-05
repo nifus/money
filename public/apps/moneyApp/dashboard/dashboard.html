@@ -54,8 +54,8 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-2">
-                Еда - октябрь 12222
+            <div class="col-md-2" ng-repeat="category in env.categories">
+                {{category.title}} - {{category.total}}
             </div>
         </div>
     </div>

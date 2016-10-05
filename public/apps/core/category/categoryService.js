@@ -7,6 +7,10 @@
         return function (data) {
             var Object = data;
             Object.waiting = false;
+            Object.total = 0;
+            for(var i in Object.transactions){
+                Object.total+=Object.transactions[i].price;
+            }
 
 
 

@@ -3,10 +3,10 @@
     'use strict';
 
     angular.module('core')
-        .factory('transferFactory', transferFactory);
-    transferFactory.$inject = ['cacheService', '$http'];
+        .factory('transactionFactory', transactionFactory);
+    transactionFactory.$inject = ['cacheService', '$http','transactionService'];
 
-    function transferFactory(cacheService, $http) {
+    function transactionFactory(cacheService, $http, transactionService) {
 
         return {
             getAll: getAll,
@@ -17,11 +17,11 @@
         function getAll() {
             var cache = cacheService(
                 function () {
-                    $http.get('/api/transfer/get-all').success(function (answer) {
+                    $http.get('/api/transaction/get-all').success(function (answer) {
                         var users = [];
                         var i;
                         for (i in answer) {
-                            users.push(userService(answer[i]));
+                            users.push(transactionService(answer[i]));
                         }
                         cache.end(users);
                     }).error(function (data, code) {
