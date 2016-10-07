@@ -12,9 +12,12 @@
         $scope.env = {
             categories:[],
             transactions:[],
+            total: 0
         };
         function initPage(deferred) {
             $scope.env.categories = $scope.$parent.env.categories;
+            updateTotal();
+
             return deferred.promise;
         }
 
@@ -36,9 +39,21 @@
                     };
                     categoryFactory.getAll().then(function(categories){
                         $scope.env.categories = categories;
+                        updateTotal();
                     });
+
                 }
             })
+        }
+
+        function updateTotal() {
+            $scope.env.total = 0;
+            for( var i in $scope.env.categories){
+                for( var j in $scope.env.categories[i].transactions){
+                    $scope.env.total+=$scope.env.categories[i].transactions[j].price
+                }
+
+            }
         }
 
 

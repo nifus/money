@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" >
     <div class="panel-heading">Транзакции</div>
     <div class="panel-body">
         <form name="transactionForm">
@@ -50,12 +50,27 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Расходы</h3>
+        <h3 class="panel-title">Расходы ( {{env.total|currency:''}} )</h3>
     </div>
     <div class="panel-body">
-        <div class="row">
+        <!-- Single button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                За все время <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Последняя неделя</a></li>
+                <li><a href="#">Последний месяц</a></li>
+                <li><a href="#">Произвольный период</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">За все время</a></li>
+            </ul>
+        </div>
+        <hr>
+
+        <div class="row" style="margin-top:20px">
             <div class="col-md-2" ng-repeat="category in env.categories">
-                {{category.title}} - {{category.total}}
+                <strong>{{category.title}}</strong> - {{category.total|currency:''}}
             </div>
         </div>
     </div>

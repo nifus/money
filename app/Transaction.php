@@ -16,7 +16,7 @@ class Transaction extends Model
         $timestamps = true;
 
     public function Categories(){
-        return $this->belongsToMany('App\Category', 'category_transaction_link', 'category_id', 'transaction_id');
+        return $this->belongsToMany('App\Category', 'category_transaction_link', 'transaction_id', 'category_id');
     }
 
 
