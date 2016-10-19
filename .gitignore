@@ -1,7 +1,5 @@
-/node_modules
-/public/storage
-/vendor
-/.idea
-Homestead.json
-Homestead.yaml
-.env
+.idea
+rethinkdb_data
+**/*.log
+.hz/secrets.toml
+node_modules

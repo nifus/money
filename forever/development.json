@@ -1,0 +1,9 @@
+{
+    // Comments are supported
+    "uid": "app",
+    "append": true,
+    "watch": true,
+    "script": "hz",
+    "sourceDir": "/usr/local/bin",
+ 	"args": ["serve", "/var/www/node/money","--dev","-b","192.168.1.7","-c","localhost:28015"]
+}
